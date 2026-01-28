@@ -7,15 +7,11 @@ msg_install "Installing apps with brew cask"
 
 cask=(
   "cursor"
-  "discord"
   "ghostty"
   "google-chrome"
   "handbrake"
   "raycast"
-  "transmission"
-  "visual-studio-code"
   "imageOptim"
-  "capcut"
   "yaak"
 )
 
