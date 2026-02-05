@@ -6,7 +6,7 @@ if [[ -d $DOTFILES ]]; then
   echo 'Checking dotfiles directory'
 else
   echo 'Cloning dotfiles'
-  git clone https://github.com/willianjusten/dotfiles.git $DOTFILES
+  git clone https://github.com/azevedo-pedro/dotfiles.git $DOTFILES
 fi
 
 cd $DOTFILES
