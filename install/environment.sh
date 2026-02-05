@@ -18,19 +18,44 @@ brew update
 brew upgrade
 
 # Brew apps
-msg_install "Installing apps with brew"
+msg_install "Installing command line tools with brew"
 brew cleanup
 brew tap buo/cask-upgrade
-brew install \
-  asdf \
-  bat \
-  curl \
-  gh \
-  git \
-  httpie \
-  tree \
-  wget \
-  zsh
+
+tools=(
+  "bat"
+  "curl"
+  "eza"
+  "fzf"
+  "gh"
+  "git"
+  "jq"
+  "mise"
+  "neovim"
+  "node"
+  "pnpm"
+  "starship"
+  "tree"
+  "uv"
+  "wget"
+  "zoxide"
+  "zsh"
+  "zsh-syntax-highlighting"
+  "zsh-autosuggestions"
+  "zsh-completions"
+  "zsh-history-substring-search"
+)
+
+for tool in "${tools[@]}"; do
+  if brew list "$tool" &>/dev/null; then
+    msg_info "$tool already installed"
+  else
+    msg_install_item "Installing $tool"
+    brew install "$tool"
+    msg_ok "$tool installed"
+  fi
+done
+
 msg_ok "Apps installed"
 
 # oh-my-zsh
@@ -55,14 +80,11 @@ else
   msg_alert "oh-my-zsh already installed with plugins"
 fi
 
-
-# Node.js with asdf
-if (test ! -d $HOME/.asdf/shims/node); then
-  msg_install "Installing Node.js"
-  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-  asdf install nodejs latest
-  asdf set -u nodejs latest
-  msg_ok "Node.js installed"
+# Node.js with mise
+if ! mise which node &> /dev/null; then
+   echo "Installing Node.js via mise"
+   mise use --global node@lts
+   mise install node
 else
   msg_alert "Node.js already installed"
 fi

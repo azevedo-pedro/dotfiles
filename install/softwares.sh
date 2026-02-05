@@ -6,12 +6,17 @@ source colors.sh
 msg_install "Installing apps with brew cask"
 
 cask=(
-  "cursor"
+  "arc"
+  "figma"
+  "font-fira-code-nerd-font"
   "ghostty"
   "google-chrome"
-  "handbrake"
+  "obsidian"
+  "orbstack"
   "raycast"
-  "imageOptim"
+  "telegram"
+  "visual-studio-code"
+  "whatsapp"
   "yaak"
 )
 
