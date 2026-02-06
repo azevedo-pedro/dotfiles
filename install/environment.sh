@@ -32,7 +32,6 @@ tools=(
   "jq"
   "mise"
   "neovim"
-  "node"
   "pnpm"
   "starship"
   "tree"
